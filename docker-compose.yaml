@@ -1,0 +1,32 @@
+version: "3.4"
+services:
+  python: #docker run -it -v ${PWD}:/work -w /work -p 5003:5000 aimvector/python:1.0.0 /bin/sh
+    container_name: python
+    image: aimvector/python:1.0.0
+    build:
+      context: ./
+      target: debug
+    #working_dir: /work      #comment out for build.target:prod
+    #entrypoint: /bin/sh     #comment out for build.target:prod
+    #stdin_open: true        #comment out for build.target:prod
+    #tty: true               #comment out for build.target:prod
+    # volumes tells dockermount local source code in src into container in working directory
+    volumes:
+    - ./src/:/work
+    ports:
+      - 5002:5000
+      - 9229:9229
+
+# script
+# build container to start debug
+# docker-compose build python
+
+# get container up and running in localhost
+# docker-compose up python
+
+# check localhost:5002
+
+# get vscode docker extension by microsoft
+
+# get debug launch json file shortcut -> ctrl shift p -> search debug:launch.json -> click any folder
+
